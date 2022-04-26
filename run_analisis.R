@@ -8,12 +8,20 @@
 ## 6-Cree un conjunto de datos ordenado con el promedio de cada variable, por actividad, por tema
 ## 7-Información de la sesión
 
+# Librerias utilizadas
+## Las Libraries utilizadas en esta operación son data.table y dplyr.
+
+library(data.table)
+library(dplyr)
+
 # 1-Descripción de los datos - archivo de origen
+
+## El archivo zip debe ser descargado en la carpeta del proyecto de los siguientes enlaces
 
 dataDescription <- "http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones"
 dataUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
 
-## Descargar y extraer archivo zip
+## Descargar y extraer archivo zip en la carpeta del proyecto
 
 download.file(dataUrl, destfile = "data.zip")
 unzip("data.zip")
@@ -31,7 +39,7 @@ subjecttest <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 Xtest <- read.table("./UCI HAR Dataset/test/X_test.txt")
 ytest <- read.table("./UCI HAR Dataset/test/y_test.txt")
 
-## leer datos de Train: subject_train, X_train, y_train 
+## Leer datos de Train: subject_train, X_train, y_train 
 
 subjecttrain <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 Xtrain <- read.table("./UCI HAR Dataset/train/X_train.txt")
@@ -47,7 +55,7 @@ train <- cbind(subjecttrain, ytrain, Xtrain)
 
 totalDataSet <- rbind(test, train)
 
-# 3-Extraer informacion de la media y la desviación estándar 
+# 3-Extraer informacion sobre la media y la desviación estándar 
 
 featuresNames <- c("subject", "activity", as.character(features$V2))
 meanStdColumns <- grep("subject|activity|[Mm]ean|std", featuresNames, value = FALSE)
@@ -77,11 +85,11 @@ reducedNames <- gsub("^anglet", "angleTime", reducedNames)
 names(reducedSet) <- reducedNames   
 
 
-# 6-Cree un conjunto de datos ordenado con el promedio de cada variable, por activity y subject
+# 6-Crear un conjunto de datos ordenado con el promedio de cada variable, por activity y subject
 
 tidyDataset <- reducedSet %>% group_by(activity, subject) %>% summarise_all(funs(mean))
 
-## Escribir datos ordenados en el archivo de salida
+## Escribir datos ordenados en el archivo de salida txt
 
 write.table(tidyDataset, file = "tidyDataset.txt", row.names = FALSE)
 seetable <- read.table("tidyDataset.txt")
