@@ -79,16 +79,15 @@ names(reducedSet) <- reducedNames
 
 # 6-Cree un conjunto de datos ordenado con el promedio de cada variable, por activity y subject
 
-tidyDataset <- reducedDataSet %>% group_by(activity, subject) %>% 
-        summarise_all(funs(mean))
+tidyDataset <- reducedSet %>% group_by(activity, subject) %>% summarise_all(funs(mean))
 
 ## Escribir datos ordenados en el archivo de salida
 
 write.table(tidyDataset, file = "tidyDataset.txt", row.names = FALSE)
-validate <- read.table("tidyDataset.txt")
-View(validate)
+seetable <- read.table("tidyDataset.txt")
+View(seetable)
 
-# Session info
+# Seccion de informacion
 
 sessionInfo()
 
