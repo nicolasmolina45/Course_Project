@@ -1,0 +1,26 @@
+# Obtención y limpieza de datos: Proyecto de curso
+
+## 1-Descripción de los datos - archivo de origen
+## Descargar y extraer archivo zip
+# Libraries utilizadas
+## Las Libraries utilizadas en esta operación son data.table y dplyr.
+
+## 2-Combinar datos de prueba y entrenamiento para crear un conjunto de datos
+## Leer datos de  Activity y Featur_labels 
+## Leer datos de Test
+## leer datos de Train: subject_train, X_train, y_train 
+## Combinar subjects, activity labels, and features en conjunto de datos: test y train
+## Combinar conjuntos de prueba y entrenamiento en un conjunto de datos total
+
+## 3-Extraer informacion de la media y la desviación estándar 
+
+## 4-Use nombres de actividades descriptivos para las mediciones de actividad
+
+## 5-Etiquete adecuadamente el conjunto de datos con nombres de variables descriptivos
+## Renombrar variables por sustitucion
+## Renombrar el data frame
+
+## 6-Cree un conjunto de datos ordenado con el promedio de cada variable, por actividad, por tema
+## Escribir datos ordenados en el archivo de salida
+
+## 7-Información de la sesión
